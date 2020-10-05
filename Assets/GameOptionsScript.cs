@@ -13,12 +13,17 @@ public class GameOptionsScript : MonoBehaviour
 
     public RawImage DirectControlImage;
     public RawImage AutonomousControlImage;
+
+    Vector3 InitialPosition;
+    Quaternion InitialRotation;
     // Start is called before the first frame update
     void Start()
     {
         robotBrain = robot.GetComponent<RobotBrain>();
         ResetRobotPositionButton.onClick.AddListener(resetRobotPosition);
         ExitApplicationButton.onClick.AddListener(QuitGame);
+        InitialPosition = robot.transform.position;
+        InitialRotation = robot.transform.rotation;
         
     }
 
@@ -40,8 +45,8 @@ public class GameOptionsScript : MonoBehaviour
 
     void resetRobotPosition()
     {
-        robot.transform.position = new Vector3(0,0.5f,-3.2f);
-        robot.transform.rotation = Quaternion.EulerAngles(new Vector3(0, 0, -0));
+        robot.transform.position =InitialPosition;
+        robot.transform.rotation = InitialRotation;
     }
 
     void QuitGame()
