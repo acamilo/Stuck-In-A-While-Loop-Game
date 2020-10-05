@@ -1683,8 +1683,8 @@ MonoBehaviour:
   CheckForMakeRobotMoveForwardElapsedTimeGoal: 5
   CheckForMakeRobotTurnElapsedTimeGoal: 3
   AcceptableAngularVelocityMagnitude: 0.1
-  RobotDetectLineDistance: 0.25
-  CheckForFollowLineTurnElapsedTimeGoal: 20
+  RobotDetectLineDistance: 0.4
+  CheckForFollowLineTurnElapsedTimeGoal: 10
   CheckForWallDistance: 1
 --- !u!1 &206073569
 GameObject:
