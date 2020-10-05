@@ -55,8 +55,12 @@ public class ProximitySensorBrain : MonoBehaviour
                               Color.blue);
             }
         }
-        Color indicatorcolor = Color.Lerp(Color.white, new Color(sensorOutput, 0, 0, 0), sensorOutput);
-        IndicatorLight.GetComponent<Renderer>().material.color = indicatorcolor;
+        //Color indicatorcolor = Color.Lerp(Color.white, new Color(sensorOutput, 0, 0, 0), sensorOutput);
+        if (sensorOutput>0.2)
+        {
+            IndicatorLight.GetComponent<Renderer>().material.color = Color.red;
+        } else
+        IndicatorLight.GetComponent<Renderer>().material.color = Color.white;
     }
 }
 
