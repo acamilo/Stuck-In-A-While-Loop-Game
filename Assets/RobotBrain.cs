@@ -26,13 +26,14 @@ public class RobotBrain : MonoBehaviour
 
     private Script luaScript;
     private string scriptCode = "";
+    public DynValue scriptReturn;
 
 
     // These are private classes to be shared with the lua inerp.
-    private robotMotor motor;
-    private RangeValueUpdater range;
-    ColorValueUpdater colorscanner;
-    RobotArmUpdater arm;
+    public robotMotor motor;
+    public RangeValueUpdater range;
+    public ColorValueUpdater colorscanner;
+    public RobotArmUpdater arm;
   
 
     public GameObject LeftRangefinder;
@@ -112,9 +113,11 @@ public class RobotBrain : MonoBehaviour
 
     private void FixedUpdate()
     {
+        scriptReturn = null;
         try
         {
             DynValue res = luaScript.DoString(scriptCode);
+            scriptReturn = res;
             //Debug.Log(res);
             LuaReturnOutput.text = res.ToDebugPrintString();
             var retobj = res.ToObject();
