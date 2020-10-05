@@ -5,18 +5,32 @@ using UnityEngine.UI;
 using System.IO;
 using SFB;
 
-public class CodePanelManager : MonoBehaviour
+public class CodeLoadSaveManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public Button SaveButton;
     public Button LoadButton;
     public InputField CodeEditor;
+    public Text WebGLWarning;
+    bool isWeb = false;
 
     void Start()
     {
         SaveButton.onClick.AddListener(SaveCode);
         LoadButton.onClick.AddListener(LoadCode);
         Debug.Log(Application.persistentDataPath);
+        isWeb = Application.platform == RuntimePlatform.WebGLPlayer;
+
+        if (isWeb)
+        {
+            SaveButton.enabled = false;
+            LoadButton.enabled = false;
+            WebGLWarning.enabled = true;
+        } else
+        {
+            WebGLWarning.enabled = false;
+        }
+
     }
 
     private void SaveCode()
