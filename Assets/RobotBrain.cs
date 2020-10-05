@@ -106,7 +106,8 @@ public class RobotBrain : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.G))
         {
-            arm.grab = !arm.grab;
+            if (!autoMode)
+                arm.grab = !arm.grab;
         }
 
     }
