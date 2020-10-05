@@ -71,11 +71,11 @@ public class RobotBrain : MonoBehaviour
     void Update()
     {
         scriptCode = codeEditor.text;
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKey(KeyCode.R))
         {
             teleopRightMotorTorque = RightWheelTorqueMax;
             //RightWheel.brakeTorque = 0f;
-        } else if(Input.GetKey(KeyCode.A))
+        } else if(Input.GetKey(KeyCode.F))
         {
             teleopRightMotorTorque = -RightWheelTorqueMax;
             //RightWheel.brakeTorque = 0f;
@@ -85,12 +85,12 @@ public class RobotBrain : MonoBehaviour
             //RightWheel.brakeTorque = 500f;
         }
 
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.E))
         {
             teleopLeftMotorTorque = LeftWheelTorqueMax;
             //LeftWheel.brakeTorque = 0f;
         }
-        else if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.D))
         {
             teleopLeftMotorTorque = -LeftWheelTorqueMax;
             //LeftWheel.brakeTorque = 0f;

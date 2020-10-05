@@ -11,6 +11,7 @@ public class ColorSensorBrain : MonoBehaviour
     public Color DetectedColor;
 
     public float SensorRange = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +53,7 @@ public class ColorSensorBrain : MonoBehaviour
                 DetectedColor = renderer.material.color;
             }
 
-
+            //DetectedColor = GetComponent<Renderer>().material.color;
 
 
         } else
