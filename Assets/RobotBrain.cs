@@ -45,6 +45,8 @@ public class RobotBrain : MonoBehaviour
 
     public GameObject RobotArm;
 
+    public Text LuaReturnOutput;
+
 
     // Start is called before the first frame update
     void Start()
@@ -101,6 +103,10 @@ public class RobotBrain : MonoBehaviour
             //LeftWheel.brakeTorque = 500f;
         }
         
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            arm.grab = !arm.grab;
+        }
 
     }
 
@@ -109,14 +115,25 @@ public class RobotBrain : MonoBehaviour
         try
         {
             DynValue res = luaScript.DoString(scriptCode);
-            Debug.Log(res);
+            //Debug.Log(res);
+            LuaReturnOutput.text = res.ToDebugPrintString();
+            var retobj = res.ToObject();
+            if (retobj is LuaColor)
+            {
+                LuaColor c = (LuaColor)retobj;
+                LuaReturnOutput.color = c.myColor;
+                LuaReturnOutput.text = "███ Color";
+            } else
+            {
+                LuaReturnOutput.color = Color.black;
+            }
             codeError = false;
             codeEditor.color = Color.black;
         } catch (Exception ex)
         {
             Debug.Log(ex.Message);
             codeError = true;
-            if (ex is SyntaxErrorException)
+            if (ex is SyntaxErrorException || ex is ScriptRuntimeException)
             {
                 codeEditor.color = Color.red;
                 
@@ -259,7 +276,7 @@ public class LuaColor
     private float  kr = 0.299f;
     private float  kg = 0.587f;
     private float  kb = 0.114f;
-    private Color myColor;
+    public Color myColor;
     public LuaColor(Color c)
     {
         setColor(c);
