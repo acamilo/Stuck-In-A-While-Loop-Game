@@ -18,7 +18,7 @@ public class TabManager : MonoBehaviour
         CodeButton.onClick.AddListener(switchToCode);
         RobotRefButton.onClick.AddListener(switchToRobot);
         LuaRefButton.onClick.AddListener(switchToLua);
-        switchToCode();
+        switchToLua();
     }
 
     void switchToCode()
