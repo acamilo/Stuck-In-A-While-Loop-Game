@@ -131,7 +131,7 @@ public class RobotBrain : MonoBehaviour
             codeEditor.color = Color.black;
         } catch (Exception ex)
         {
-            Debug.Log(ex.Message);
+            //Debug.Log(ex.Message);
             codeError = true;
             if (ex is SyntaxErrorException || ex is ScriptRuntimeException)
             {
